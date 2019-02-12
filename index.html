@@ -16,6 +16,8 @@
         background-image: url("");
     }
     .navbar-inverse{
+        background-color: black;
+        border: 2px solid cadetblue;
     }
     .product{
         box-shadow: 0 0px 2px 1px rgba(0,0,0,0.14), 0 3px 1px -2px rgba(0,0,0,0.2), 0 1px 5px 0 rgba(0,0,0,0.12);
@@ -153,6 +155,7 @@
     .pay_btn{
         padding-right: 1px;
         padding-left: 1px;
+        padding-bottom: 5px;
     }
     .pay_btn .btn-default, .btn-danger, .btn-success, .btn-warning, .btn-info{
         width: 100%; 
@@ -296,21 +299,10 @@
         background: #f0f0f0;  
         text-align: center;
     }
-    @media only screen and (max-width: 1366px) {
     .responsive{
-        height:350px;
+        min-height:55vh;
     }
-    }
-    @media only screen and (min-width: 1600px) {
-    .responsive{
-        height:370px;
-    }
-    }
-    @media only screen and (min-width: 1920px) {
-    .responsive{
-        height:700px;
-    }
-    }
+    
   </style>
 </head>
 <body>
@@ -347,19 +339,16 @@
                     </div>
                     <div class="row Pro_List">
                         <div class="col-sm-3 bill_type">
-                            <div class="input-group">
-                                <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                                 <input id="date" type="date" class="form-control" name="date" placeholder="Date">
-                              </div>
                         </div>
                         <div class="col-sm-3 bill_type">
-                            <input type="text" class="form-control" placeholder="Customer Name">
+                            <input type="text" class="form-control" value="Cash" placeholder="Customer Name">
                         </div>
                         <div class="col-sm-3 bill_type">
-                            <input type="text" class="form-control" placeholder="Bill No">
+                            <input type="text" class="form-control" value="R-11" placeholder="Bill No">
                         </div>
                         <div class="col-sm-3 bill_type">
-                            <input type="number" class="form-control" placeholder="Customer mobileNo">    
+                            <input type="number" class="form-control" value="9786756453" placeholder="Customer mobileNo">    
                         </div>
                     </div>
                     <div class="row Pro_Search">
@@ -407,7 +396,7 @@
                     </div><br>
                     <div class="row Pro_List">
                         <div class="table-responsive responsive">
-                          <table class="table table-hover table1">
+                          <table class="table table-hover table1"  id="dsTable">
                             <thead>
                               <tr class="bg-info">
                                 <th id="td_sm">S.no</th>
@@ -433,13 +422,13 @@
                                     </div> -->
                                 </td>
                                 <td>$ 100</td>
-                                <td id="td_sm"><i class="fas fas fa-times"></i></i></td>
+                                <td id="td_sm"><i onclick="deleteRow(this)" class="fas fas fa-times"></i></i></td>
                               </tr>
                               <tr>
                                 <td id="td_sm">2</td>
                                 <td>bread</td>
                                 <td>$ 50</td>
-                                <td width="100" class="text-center item-control-btns">2
+                                <td width="100"  class="text-center item-control-btns">2
                                     <!-- <div class="input-group input-group-sm">
                                         <span class="input-group-btn item-control-btns-wrapper">
                                             <button class="btn btn-default item-reduce">-</button>
@@ -449,13 +438,13 @@
                                     </div> -->
                                 </td>
                                 <td>$ 100</td>
-                                <td id="td_sm"><i class="fas fas fa-times"></i></i></td>
+                                <td id="td_sm"><i onclick="deleteRow(this)" class="fas fas fa-times"></i></i></td>
                               </tr>
                                <tr>
                                 <td id="td_sm">3</td>
                                 <td>bread</td>
                                 <td>$ 50</td>
-                                <td width="100" class="text-center item-control-btns">2
+                                <td width="100"  class="text-center item-control-btns">2
                                     <!-- <div class="input-group input-group-sm">
                                         <span class="input-group-btn item-control-btns-wrapper">
                                             <button class="btn btn-default item-reduce">-</button>
@@ -465,7 +454,7 @@
                                     </div> -->
                                 </td>
                                 <td>$ 100</td>
-                                <td id="td_sm"><i class="fas fas fa-times"></i></i></td>
+                                <td id="td_sm"><i onclick="deleteRow(this)" class="fas fas fa-times"></i></i></td>
                               </tr>
                                <tr>
                                 <td id="td_sm">4</td>
@@ -481,7 +470,7 @@
                                     </div> -->
                                 </td>
                                 <td>$ 100</td>
-                                <td id="td_sm"><i class="fas fas fa-times"></i></i></td>
+                                <td id="td_sm"><i onclick="deleteRow(this)" class="fas fas fa-times"></i></i></td>
                               </tr>
                                <tr>
                                 <td id="td_sm">5</td>
@@ -497,7 +486,7 @@
                                     </div> -->
                                 </td>
                                 <td>$ 100</td>
-                                <td id="td_sm"><i class="fas fas fa-times"></i></i></td>
+                                <td id="td_sm"><i onclick="deleteRow(this)" class="fas fas fa-times"></i></i></td>
                               </tr>
                                <tr>
                                 <td id="td_sm">6</td>
@@ -513,7 +502,7 @@
                                     </div> -->
                                 </td>
                                 <td>$ 100</td>
-                                <td id="td_sm"><i class="fas fas fa-times"></i></i></td>
+                                <td id="td_sm"><i onclick="deleteRow(this)" class="fas fas fa-times"></i></i></td>
                               </tr>
                             
                               
@@ -575,7 +564,7 @@
                             <div class="col-sm-3 pay_btn">
                                 <button class="btn btn-danger"><i class="fas fa-trash"></i> Delete</button>
                             </div>
-                            <div class="col-sm-3 pay_btn">
+                            <div class="col-sm-3  pay_btn">
                                 <button class="btn btn-success"><i class="fas fa-save"></i> Save</button>
                             </div>
                             <div class="col-sm-3 pay_btn">
@@ -657,5 +646,11 @@
 
   </div>
 </div>
+<script>
+  function deleteRow(btn) {
+  var row = btn.parentNode.parentNode;
+  row.parentNode.removeChild(row);
+}
+</script>
 </body>
 </html>
