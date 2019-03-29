@@ -226,10 +226,12 @@
       padding: 10px;
       margin: 50px auto;
       width: 340px;
-      background-color: #fff;
       -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
       -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
       box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+      background-color: rgba(0,0,0,0.5) !important;
+      color: white;
+      font-family: 'Numans', sans-serif;
     }
     .input {
       width: 75%;
@@ -284,11 +286,6 @@
     .sign{
         background-image: url(2.jpg);
     }
-    #logbox {
-        background-color: rgba(0,0,0,0.5) !important;
-        color: white;
-        font-family: 'Numans', sans-serif;
-    }
     .form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
         background-color: #f0f8f0;
         opacity: 1;
@@ -302,7 +299,39 @@
     .responsive{
         min-height:55vh;
     }
-    
+    .Pro_List table thead tr th{
+      font-family: 'Numans', sans-serif; 
+    }
+    .Pro_billing{
+        color:grey;
+    }
+    .cashpart{
+        margin: 3px 0px;
+    }
+    .cardpart{
+        margin: 3px 0px;
+    }
+    .cash{
+        padding: 0px 20px;
+    }
+    .card{
+        padding: 0px 2px;
+    }
+    .card input, select{
+       margin: 5px;
+    }
+    .Pro_casetype label{
+      font-variant: small-caps;
+      color:#524f4fde;
+      background-color: #f8f8f8;
+      
+    }
+    .Pro_casetype{
+      background-color: #f8f8f8;
+    }
+    .Pro_casetype input, .card select{
+      background-color: #f0f8f1;
+    }
   </style>
 </head>
 <body>
@@ -354,7 +383,7 @@
                     <div class="row Pro_Search">
                         <div class="input-group">
                             <span class="input-group-addon"><i class="fas fa-barcode"></i></span>
-                            <input type="text" class="  search-query form-control" placeholder="Search">
+                            <input type="text" class="search-query form-control" placeholder="Search and Scan Qr code">
                             <div class="input-group-btn">
                               <button class="btn btn-default" type="submit">
                                 <i class="glyphicon glyphicon-search"></i>
@@ -403,6 +432,7 @@
                                 <th>Item</th>
                                 <th>Price</th>
                                 <th>Qty</th>
+                                <th>Discount</th>
                                 <th>Total</th>
                                 <th id="td_sm">Action</th>
                               </tr>
@@ -421,6 +451,7 @@
                                         </span>
                                     </div> -->
                                 </td>
+                                <td>00.00</td>
                                 <td>$ 100</td>
                                 <td id="td_sm"><i onclick="deleteRow(this)" class="fas fas fa-times"></i></i></td>
                               </tr>
@@ -437,6 +468,7 @@
                                         </span>
                                     </div> -->
                                 </td>
+                                <td>00.00</td>
                                 <td>$ 100</td>
                                 <td id="td_sm"><i onclick="deleteRow(this)" class="fas fas fa-times"></i></i></td>
                               </tr>
@@ -453,6 +485,7 @@
                                         </span>
                                     </div> -->
                                 </td>
+                                <td>00.00</td>
                                 <td>$ 100</td>
                                 <td id="td_sm"><i onclick="deleteRow(this)" class="fas fas fa-times"></i></i></td>
                               </tr>
@@ -469,6 +502,7 @@
                                         </span>
                                     </div> -->
                                 </td>
+                                <td>00.00</td>
                                 <td>$ 100</td>
                                 <td id="td_sm"><i onclick="deleteRow(this)" class="fas fas fa-times"></i></i></td>
                               </tr>
@@ -485,6 +519,7 @@
                                         </span>
                                     </div> -->
                                 </td>
+                                <td>00.00</td>
                                 <td>$ 100</td>
                                 <td id="td_sm"><i onclick="deleteRow(this)" class="fas fas fa-times"></i></i></td>
                               </tr>
@@ -501,6 +536,7 @@
                                         </span>
                                     </div> -->
                                 </td>
+                                <td>00.00</td>
                                 <td>$ 100</td>
                                 <td id="td_sm"><i onclick="deleteRow(this)" class="fas fas fa-times"></i></i></td>
                               </tr>
@@ -519,7 +555,12 @@
                         <div class="col-sm-8">
                             <h4 class="text-center">Billing</h4></div>
                         <div class="col-sm-2"><!-- <button class="btn btn-default btn-xs Pro_edit">Edit</button> --></div>
-                    </div><br><br><br><br>
+                    </div>
+                    <div class="row Pro_billing">
+                        <div class="col-sm-4"><label>Counter: Admin</label></div>
+                        <div class="col-sm-4"></div>
+                        <div class="col-sm-4">Date: 20/02/2019</div>
+                    </div><br><br>
                    <div class="row Pro_List">
                       <table class="table table-hover table2">
                             <tbody>
@@ -553,13 +594,43 @@
                                     <input type="text" class="form-control" value="₹500" size="1" style="text-align:right"></td>
                               </tr>
                               <tr>
-                                <td class="bg-info bal_amt">Balance :</td>
+                                <td class="bg-info bal_amt">Change :</td>
                                 <td class="bg-default bal_amt">₹90</td>
                               </tr>
                             </tbody>
                           </table>
                           </div>
-                          <br>
+                          <div class="row Pro_casetype">
+                            <div class="col-sm-12 cashpart">
+                                <div class="col-sm-3">
+                                  <input type="radio" name="pay"><label>Cash</label>
+                                </div>
+                                <div class="col-sm-9 cash">
+                                  <input type="text" class="form-control" placeholder="Cash Amount">
+                                </div>
+                            </div>
+                            <div class="col-sm-12 cardpart">
+                                <div class="col-sm-3">
+                                  <input type="radio" name="pay"><label>Card</label>
+                                </div>
+                                <div class="col-sm-9">
+                                    <div class="col-sm-6 card">
+                                      <select class="form-control">
+                                          <option value="">Choose card</option>
+                                          <option value="">Master card</option>
+                                          <option value="">Credit card</option>
+                                          <option value="">MADA card</option>
+                                      </select>
+                                      <input type="number" class="form-control" placeholder="Refernce number">
+                                   </div>
+                                   <div class="col-sm-6 card">
+                                      <input type="text" class="form-control" placeholder="Card Amount">
+                                      <input type="date" class="form-control" placeholder="Expiry Date">
+                                   </div>
+                                </div>
+                            </div>
+                            
+                        </div>
                           <div class="row Pro_List">
                             <div class="col-sm-3 pay_btn">
                                 <button class="btn btn-danger"><i class="fas fa-trash"></i> Delete</button>
@@ -596,7 +667,7 @@
                 <h3>create an account</h3>
                 <input name="user[name]" type="text" placeholder="What's your username?" pattern="^[\w]{3,16}$" autofocus="autofocus" required="required" class="input pass"/>
                 <input name="user[password]" type="password" placeholder="Choose a password" required="required" class="input pass"/>
-                <input name="user[password2]" type="password" placeholder="Confirm password" required="required" class="input pass"/>
+                <input name="user[password2]" type="number" placeholder="Mobile number" required="required" class="input pass"/>
                 <input name="user[email]" type="email" placeholder="Email address" class="input pass"/>
                 <input type="submit" value="Sign me up!" class="inputButton"/>
                 
